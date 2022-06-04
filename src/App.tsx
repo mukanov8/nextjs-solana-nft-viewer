@@ -1,14 +1,14 @@
+import { Box } from '@chakra-ui/react'
 import React from 'react'
+import ModeButton from './components/ModeButton'
+import SearchPage from './pages/SearchPage'
 
 const App = () => {
   return (
-    <div data-testid="centralized_swap">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <Box w="100vw" h="100vh">
+      <ModeButton position="fixed" right="0" mr="24px" mt="24px" />
+      <SearchPage />
+    </Box>
   )
 }
 

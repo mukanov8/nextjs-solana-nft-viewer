@@ -1,16 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './styles/index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { RecoilRoot } from 'recoil'
 import { ChakraProvider } from '@chakra-ui/react'
-import defaultTheme from './themes/defaultTheme'
+import theme from './theme'
 
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <ChakraProvider theme={defaultTheme}>
+      <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>
     </RecoilRoot>
