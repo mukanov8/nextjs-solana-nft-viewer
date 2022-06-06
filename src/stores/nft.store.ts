@@ -1,10 +1,6 @@
 import { atom, selector } from 'recoil'
 import { searchPublicKey } from '../api/searchPublicKey'
-
-// export const nftState = atom<[]>({
-//   key: 'nftState',
-//   default: [],
-// })
+import { validatePublicKey } from '../helpers/validatePublicKey'
 
 export const publicKeyState = atom<string>({
   key: 'publicKeyState',
@@ -13,10 +9,16 @@ export const publicKeyState = atom<string>({
 
 export const nftReadOnlyState = selector({
   key: 'nftReadOnlyState',
-  get: ({ get }) => {
+  get: async ({ get }) => {
     const publicKey = get(publicKeyState)
-    const metadata = searchPublicKey(publicKey)
-    console.log('aaa')
-    return metadata
+    console.log(publicKey, ';aasg')
+    if (validatePublicKey(publicKey)) {
+      const metadata = await searchPublicKey(publicKey)
+      console.log(metadata)
+      return metadata
+    } else {
+      alert('Invalid public key')
+      return []
+    }
   },
 })
