@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react'
-import Nft from '@src/components/nft'
+import NftItem from '@src/components/nft-item'
 import { Wrap, WrapItem } from '@chakra-ui/react'
 
 interface Props {
@@ -13,7 +13,7 @@ const NftList: React.FC<Props> = ({ nfts }) => {
     <Wrap spacing="48px" h="100%">
       {nfts.map((nft) => (
         <WrapItem key={nft.data.mint.toString()}>
-          <Nft nft={nft} />{' '}
+          <NftItem nft={nft} />
         </WrapItem>
       ))}
     </Wrap>

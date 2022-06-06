@@ -6,7 +6,7 @@ interface Props {
   nft: any
 }
 
-const Nft: React.FC<Props> = ({ nft }) => {
+const NftItem: React.FC<Props> = ({ nft }) => {
   console.log(nft, 'nft')
   console.log(nft.data)
   console.log(nft.data.creators)
@@ -33,4 +33,4 @@ const Nft: React.FC<Props> = ({ nft }) => {
   )
 }
 
-export default Nft
+export default NftItem

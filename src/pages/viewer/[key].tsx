@@ -22,7 +22,7 @@ const ViewerPage = () => {
         <Button>Last transaction time</Button>
         <Button>Last creation time</Button>
       </Flex>
-      <Center h="100%">
+      <Center h="100%" overflowX="hidden" overflowY="auto">
         {nftsLoadable.state === 'loading' && <Spinner />}
         {nftsLoadable.state === 'hasError' && <Error />}
         {nftsLoadable.state === 'hasValue' && <NftList nfts={nfts} />}

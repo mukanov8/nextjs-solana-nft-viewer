@@ -36,7 +36,7 @@ const SearchPage: NextPage = () => {
           focusBorderColor="primary"
           isInvalid={isInvalidShown}
         />
-        <InputRightElement children={<SearchIcon color="primary" />} onClick={handleSubmit} />
+        <InputRightElement children={<SearchIcon color="primary" />} cursor="pointer" onClick={handleSubmit} />
       </InputGroup>
       {isInvalidShown && (
         <Text>

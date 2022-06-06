@@ -13,11 +13,11 @@ const App = ({ Component, pageProps }: any) => {
   return (
     <RecoilRoot>
       <ChakraProvider theme={defaultTheme}>
+        <Head>
+          <meta charSet="utf-8" />
+          <title>{APP_NAME}</title>
+        </Head>
         <Center w="100vw" h="100vh" flexDir="column" p={['16px', '48px']}>
-          <Head>
-            <meta charSet="utf-8" />
-            <title>{APP_NAME}</title>
-          </Head>
           <ModeButton position="fixed" right="0" top="0" mr={['16px', '48px']} mt={['16px', '48px']} />
           <Component {...pageProps} />
         </Center>

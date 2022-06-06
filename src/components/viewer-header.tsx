@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Flex, Heading, Input, InputGroup, InputRightElement, Tooltip } from '@chakra-ui/react'
+import { Flex, Heading, Input, InputGroup, InputRightElement, Link, Tooltip } from '@chakra-ui/react'
 import { validatePublicKey } from '@src/helpers/validatePublicKey'
 import { publicKeyState } from '@src/stores/nft.store'
 import { useRecoilState } from 'recoil'
 import { SearchIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/router'
+import { Link as NextLink } from 'next/link'
 
 const ViewerHeader = () => {
   const { APP_NAME } = process.env
@@ -37,9 +38,11 @@ const ViewerHeader = () => {
 
   return (
     <Flex flexDir="row" w="100%">
-      <Heading as="h3" size="lg">
-        {APP_NAME}
-      </Heading>
+      <Link as={NextLink} to="/">
+        <Heading as="h3" size="lg">
+          {APP_NAME}
+        </Heading>
+      </Link>
       <Tooltip label={`${publicKey} is not a valid key`} placement="top" isOpen={isInvalidShown}>
         <InputGroup as="form" onSubmit={handleSubmit} w={['100%', '60%']} minW={['unset', '500px']} mx="auto">
           <Input
