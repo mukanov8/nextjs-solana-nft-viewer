@@ -6,6 +6,7 @@ const ModeButton: React.FC<ButtonProps> = ({ ...props }) => {
   const { colorMode, toggleColorMode } = useColorMode()
 
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Button onClick={toggleColorMode} p="8px" {...props} aria-label="mode-button">
       {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
     </Button>

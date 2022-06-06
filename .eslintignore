@@ -1,5 +1,3 @@
-public
-static
-.cache
-content
 node_modules
+out
+*.css
