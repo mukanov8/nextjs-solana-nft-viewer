@@ -27,9 +27,10 @@ A simple Next application for viewing NFTs of an arbitrary public key (address)
 - [x] Next project setup
 - [x] UI
 - [x] Retrieve nft metadata from public address
-- [ ] Parse nft metadata and get image, creator and other data
-- [ ] Link to public token on click
-- [ ] NFT listing customization
+- [x] Parse nft metadata and get image, creator and other data
+- [x] Link to public token on click
+- [ ] Get transaction & creation time data from nft metadata
+- [ ] NFT listing/ordering customization
 - [ ] NFT bookmark
 - [ ] Undo button(?)
 
