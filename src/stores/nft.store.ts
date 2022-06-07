@@ -33,7 +33,7 @@ export const nftReadOnlyQuery = selectorFamily({
     try {
       // ref: https://www.abiraja.com/blog/querying-solana-blockchain
       const connection = new Connection(clusterApiUrl('devnet'), 'confirmed')
-      return await programs.metadata.Metadata.findByOwnerV2(connection, publicKey)
+      return await programs.metadata.Metadata.findDataByOwner(connection, publicKey)
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log('error in nftReadOnlyQuery')
@@ -41,3 +41,25 @@ export const nftReadOnlyQuery = selectorFamily({
     }
   },
 })
+
+// export const parsedNftReadOnlyQuery = selectorFamily({
+//   key: 'parsedNftReadOnlyQuery',
+//   get: (nfts: Metadata[]) => () => {
+//     try {
+//       return nfts.map((nft) => {
+//         const { mint } = nft
+//         const { uri, name } = nft.data
+//         return {
+//           mint,
+//           name,
+//           creators: nft.data.creators,
+//           uri,
+//         } as ParsedNftType
+//       })
+//     } catch (error) {
+//       // eslint-disable-next-line no-console
+//       console.log('error in parsedNftReadOnlyQuery')
+//       return []
+//     }
+//   },
+// })

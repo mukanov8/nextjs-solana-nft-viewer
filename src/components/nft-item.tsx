@@ -1,35 +1,47 @@
 /* eslint-disable no-console */
-import { Box, Text, Img } from '@chakra-ui/react'
+import { Box, Text, Img, useColorModeValue, Skeleton, Link } from '@chakra-ui/react'
+import useFetch from '@src/hooks/useFetch'
+import { ParsedNftType } from '@src/types'
 import React from 'react'
 
 interface Props {
-  nft: any
+  nft: ParsedNftType
 }
 
 const NftItem: React.FC<Props> = ({ nft }) => {
-  console.log(nft, 'nft')
-  console.log(nft.data)
-  console.log(nft.data.creators)
+  const bg = useColorModeValue('unset', 'whiteAlpha.200')
+  const hoverBg = useColorModeValue('unset', 'whiteAlpha.300')
+
+  // nft image url data
+  const { data, loading } = useFetch(nft.uri)
 
   return (
-    <Box w="220px" borderRadius="15px" bg="blackAlpha.300" cursor="pointer" onClick={() => console.log('nft clicked')}>
-      <Img
-        w="100%"
-        height="200px"
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.F-Rkkyw37XOEaASnK5q_LgHaGB%26pid%3DApi&f=1"
-        alt={nft.data.data.name}
-        borderRadius="15px"
-      />
-      <Box p="12px">
-        <Text fontSize="lg">{nft.data.data.name}</Text>
-        <Text fontSize="sm">
-          Creator:{' '}
-          <Text whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
-            {nft.data.creators}
-          </Text>{' '}
-        </Text>
+    <a href={`https://solscan.io/token/${nft.mint}`}>
+      <Box
+        w="220px"
+        borderRadius="16px"
+        bg={bg}
+        transition="transform linear .2s"
+        _hover={{ bg: hoverBg, transform: 'scale(1.05)', boxShadow: '2xl' }}
+        boxShadow="xl"
+        cursor="pointer"
+      >
+        <Skeleton isLoaded={!loading}>
+          <Img w="100%" height="200px" objectFit="cover" src={`${data?.image}`} alt={nft.name} borderRadius="16px" />
+        </Skeleton>
+        <Box p="12px">
+          <Text fontSize="lg">{nft.name}</Text>
+          <Text fontSize="sm">
+            Creator:
+            {nft.creators.map((creator) => (
+              <Text whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
+                {creator.address}
+              </Text>
+            ))}
+          </Text>
+        </Box>
       </Box>
-    </Box>
+    </a>
   )
 }
 

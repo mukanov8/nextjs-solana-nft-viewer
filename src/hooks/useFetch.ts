@@ -4,7 +4,6 @@ const useFetch = (url: string) => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [loaded, setLoaded] = useState(false)
-
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -12,8 +11,6 @@ const useFetch = (url: string) => {
       .then((res) => res.json())
       .then(
         (res) => {
-          // eslint-disable-next-line no-console
-          console.log(res)
           setData(res)
           setLoading(false)
           setLoaded(true)

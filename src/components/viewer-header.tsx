@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Flex, Heading, Input, InputGroup, InputRightElement, Link, Tooltip } from '@chakra-ui/react'
-import { validatePublicKey } from '@src/helpers/validatePublicKey'
+import { validatePublicKey } from '@src/utils/validatePublicKey'
 import { publicKeyState } from '@src/stores/nft.store'
 import { useRecoilState } from 'recoil'
 import { SearchIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/router'
 import { Link as NextLink } from 'next/link'
+import ModeButton from '@src/components/mode-button'
 
 const ViewerHeader = () => {
   const { APP_NAME } = process.env
@@ -55,6 +56,7 @@ const ViewerHeader = () => {
           <InputRightElement cursor="pointer" children={<SearchIcon color="primary" />} onClick={handleSubmit} />
         </InputGroup>
       </Tooltip>
+      <ModeButton ml="auto" />
     </Flex>
   )
 }

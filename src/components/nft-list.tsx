@@ -1,22 +1,22 @@
 /* eslint-disable no-console */
 import React from 'react'
 import NftItem from '@src/components/nft-item'
-import { Wrap, WrapItem } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
+import { getParsedNfts } from '@src/utils/getParsedNfts'
 
 interface Props {
   nfts: Metadata[]
 }
 const NftList: React.FC<Props> = ({ nfts }) => {
   console.log(nfts)
+  const parsedNfts = getParsedNfts(nfts)
 
   return (
-    <Wrap spacing="48px" h="100%">
-      {nfts.map((nft) => (
-        <WrapItem key={nft.data.mint.toString()}>
-          <NftItem nft={nft} />
-        </WrapItem>
+    <SimpleGrid minChildWidth="220px" spacing="40px" height="100%" width="100%">
+      {parsedNfts.map((nft, i) => (
+        <NftItem nft={nft} key={i.toString()} />
       ))}
-    </Wrap>
+    </SimpleGrid>
   )
 }
 

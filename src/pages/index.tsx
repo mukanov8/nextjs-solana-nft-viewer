@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 import MainHeading from '@src/components/main-heading/main-heading'
-import { validatePublicKey } from '../helpers/validatePublicKey'
+import { validatePublicKey } from '@src/utils/validatePublicKey'
 
 const SearchPage: NextPage = () => {
   const { APP_NAME } = process.env

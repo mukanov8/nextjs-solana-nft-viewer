@@ -8,7 +8,7 @@ export default extendTheme({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     global: (props: any) => ({
       body: {
-        color: mode('gray.700', 'whiteAlpha.800')(props),
+        color: mode('gray.700', 'whiteAlpha.900')(props),
         bg: mode('gray.50', '#08080b')(props), // MUI black #121212 // alt #0d1117
         '-webkit-font-smoothing': 'antialiased',
         '-moz-osx-font-smoothing': 'grayscale',
