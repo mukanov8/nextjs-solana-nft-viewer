@@ -26,8 +26,8 @@ const NftItem: React.FC<Props> = ({ nft }) => {
         boxShadow="xl"
         cursor="pointer"
       >
-        <Skeleton isLoaded={!loading}>
-          <Img w="100%" height="200px" objectFit="cover" src={`${data?.image}`} alt={nft.name} borderRadius="16px" />
+        <Skeleton isLoaded={!loading} borderRadius="16px">
+          <Img w="100%" height="200px" objectFit="cover" src={data?.image} alt={nft.name} borderRadius="16px" />
         </Skeleton>
         <Box p="12px">
           <Text fontSize="lg">{nft.name}</Text>
