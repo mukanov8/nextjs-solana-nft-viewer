@@ -37,7 +37,7 @@ const ViewerHeader = () => {
   }
 
   return (
-    <Flex flexDir="row" w="100%">
+    <Flex flexDir={['column', 'row']} w="100%" gap={['16px', 'unset']}>
       <NextLink href="/" passHref>
         <Heading as="a" size="lg">
           {APP_NAME}

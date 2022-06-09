@@ -7,6 +7,7 @@ export type Creator = {
 export type ParsedNftType = {
   mint: string
   name: string
-  creators: Creator[]
+  creators: Creator[] | null
   uri: string
+  time: Date[]
 }
