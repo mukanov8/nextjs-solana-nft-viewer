@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { connectionState, parsedNftReadOnlyQuery } from '@src/stores/nft.store'
+import { connectionState, orderByState, parsedNftReadOnlyQuery } from '@src/stores/nft.store'
 import { useRecoilValueLoadable, useSetRecoilState } from 'recoil'
 import { Button, Center, Flex, Spinner } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
@@ -7,6 +7,7 @@ import ViewerHeader from '@src/components/viewer-header'
 import Error from '@src/components/error'
 import NftList from '@src/components/nft-list'
 import { clusterApiUrl, Connection } from '@solana/web3.js'
+import { OrderBy } from '@src/enums'
 
 const ViewerPage = () => {
   const router = useRouter()
@@ -21,12 +22,14 @@ const ViewerPage = () => {
   const nftsLoadable = useRecoilValueLoadable(parsedNftReadOnlyQuery(key as string))
   const nfts = nftsLoadable.state === 'hasValue' ? nftsLoadable.contents : []
 
+  const setOrderBy = useSetRecoilState(orderByState)
+
   return (
     <Flex w="100%" h="100%" flexDir="column">
       <ViewerHeader />
       <Flex py={['20px', '40px']} gap="16px">
-        <Button>Last transaction time</Button>
-        <Button>Last creation time</Button>
+        <Button onClick={() => setOrderBy(OrderBy.LastTransactionTime)}>Last transaction time</Button>
+        <Button onClick={() => setOrderBy(OrderBy.CreationTime)}>Last creation time</Button>
       </Flex>
       <Center h="100%">
         {nftsLoadable.state === 'loading' && <Spinner />}

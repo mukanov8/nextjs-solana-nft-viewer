@@ -2,11 +2,11 @@
 import React from 'react'
 import { Box, Text, Img, useColorModeValue, Skeleton } from '@chakra-ui/react'
 import useFetch from '@src/hooks/useFetch'
-import { ParsedNftType } from '@src/types'
+import { Nft } from '@src/types'
 import { formatCreatorName } from '@src/utils/formatCreatorName'
 
 interface Props {
-  nft: ParsedNftType
+  nft: Nft
 }
 
 const NftItem: React.FC<Props> = ({ nft }) => {

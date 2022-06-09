@@ -4,10 +4,18 @@ export type Creator = {
   verified: number
 }
 
-export type ParsedNftType = {
+export type Nft = {
   mint: string
   name: string
   creators: Creator[] | null
   uri: string
-  time: Date[]
+  isBookmarked: boolean
+  bookmarkedTime: Date
+  creationTime: Date
+  lastTransactionTime: Date
+}
+
+export type Bookmark = {
+  mint: string
+  timestamp: Date
 }

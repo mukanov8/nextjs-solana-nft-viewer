@@ -2,12 +2,20 @@
 import React from 'react'
 import NftItem from '@src/components/nft-item'
 import { SimpleGrid } from '@chakra-ui/react'
+import { getOrderedNfts } from '@src/utils/getOrderedNfts'
+import { orderByState } from '@src/stores/nft.store'
+import { useRecoilValue } from 'recoil'
 
 interface Props {
   nfts: Metadata[]
 }
 const NftList: React.FC<Props> = ({ nfts }) => {
   console.log('nfts: ', nfts)
+  const orderBy = useRecoilValue(orderByState)
+  const orderedNfts = getOrderedNfts(nfts, orderBy)
+
+  console.log('sortedNfts: ', orderedNfts)
+  console.log('orderedBy: ', orderBy)
 
   return (
     <SimpleGrid
@@ -18,7 +26,7 @@ const NftList: React.FC<Props> = ({ nfts }) => {
       justifyItems={['center', 'unset']}
       paddingBottom={['16px', '48px']}
     >
-      {nfts.map((nft, i) => (
+      {orderedNfts.map((nft, i) => (
         <NftItem nft={nft} key={i.toString()} />
       ))}
     </SimpleGrid>
