@@ -74,8 +74,8 @@ export const parsedNftReadOnlyQuery = selectorFamily({
               Returns confirmed signatures for transactions involving an address backwards in time from the provided signature or most recent confirmed block.
               Arbitrary limit of 100.
             */
-            const signature = await connection.getSignaturesForAddress(new PublicKey(mint), { limit: 100 })
-            const time = signature.map((el) => new Date(el.blockTime || 0))
+            const signatures = await connection.getSignaturesForAddress(new PublicKey(mint), { limit: 100 })
+            const time = signatures.map((el) => new Date(el.blockTime || 0))
             const bookmark = bookmarks.find((el) => el.mint === mint)
             console.log('time: ', time)
 
@@ -87,7 +87,7 @@ export const parsedNftReadOnlyQuery = selectorFamily({
               // TODO: implement bookmark
               isBookmarked: !!bookmark,
               bookmarkedTime: bookmark?.timestamp,
-              creationTime: time[-1],
+              creationTime: time.at(-1),
               lastTransactionTime: time[0],
             } as Nft
           } catch (error) {

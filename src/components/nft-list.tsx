@@ -27,7 +27,7 @@ const NftList: React.FC<Props> = ({ nfts }) => {
       paddingBottom={['16px', '48px']}
     >
       {orderedNfts.map((nft, i) => (
-        <NftItem nft={nft} key={i.toString()} />
+        <NftItem nft={nft} key={nft.mint.toString()} />
       ))}
     </SimpleGrid>
   )

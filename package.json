@@ -17,6 +17,7 @@
     "production:clean": "rimraf out/"
   },
   "dependencies": {
+    "@chakra-icons/octicons": "^1.5.0",
     "@chakra-ui/icons": "^2.0.1",
     "@chakra-ui/react": "^1.7.3",
     "@chakra-ui/theme-tools": "^2.0.1",
