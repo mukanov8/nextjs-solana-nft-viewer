@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
-import { Box, Text, Img, useColorModeValue, Skeleton, Link } from '@chakra-ui/react'
+import React from 'react'
+import { Box, Text, Img, useColorModeValue, Skeleton } from '@chakra-ui/react'
 import useFetch from '@src/hooks/useFetch'
 import { ParsedNftType } from '@src/types'
-import React from 'react'
+import { formatCreatorName } from '@src/utils/formatCreatorName'
 
 interface Props {
   nft: ParsedNftType
@@ -31,14 +32,7 @@ const NftItem: React.FC<Props> = ({ nft }) => {
         </Skeleton>
         <Box p="12px">
           <Text fontSize="lg">{nft.name}</Text>
-          <Text fontSize="sm">
-            Creator:
-            {nft.creators.map((creator) => (
-              <Text whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
-                {creator.address}
-              </Text>
-            ))}
-          </Text>
+          <Text fontSize="sm">Creator: {nft.creators && formatCreatorName(nft.creators[0].address)}</Text>
         </Box>
       </Box>
     </a>
