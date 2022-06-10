@@ -20,9 +20,11 @@ const NftList: React.FC<Props> = ({ nfts }) => {
   return (
     <SimpleGrid
       minChildWidth="220px"
+      minChildHeight="280px"
       spacing="40px"
-      height="100%"
       width="100%"
+      height={['100%', 'unset']}
+      mb="auto"
       justifyItems={['center', 'unset']}
       paddingBottom={['16px', '48px']}
     >

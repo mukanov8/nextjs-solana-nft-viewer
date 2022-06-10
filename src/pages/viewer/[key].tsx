@@ -29,11 +29,11 @@ const ViewerPage = () => {
   return (
     <Flex w="100%" h="100%" flexDir="column">
       <ViewerHeader />
-      <Flex py={['20px', '40px']} gap="16px">
+      <Flex py={['20px', '40px']} gap="16px" flexDir={['column', 'row']}>
         <Button onClick={() => setOrderBy(OrderBy.LastTransactionTime)}>Last transaction time</Button>
         <Button onClick={() => setOrderBy(OrderBy.CreationTime)}>Last creation time</Button>
         {bookmarks.length > 0 && (
-          <Button ml="auto" colorScheme="red" onClick={resetBookmarks}>
+          <Button ml={['unset', 'auto']} colorScheme="red" onClick={resetBookmarks}>
             Clear bookmarks
           </Button>
         )}
