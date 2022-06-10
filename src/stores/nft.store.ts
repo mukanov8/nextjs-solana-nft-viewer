@@ -3,8 +3,10 @@ import { programs } from '@metaplex/js'
 import { Connection, PublicKey } from '@solana/web3.js'
 import { Bookmark, Nft } from '@src/types'
 import { OrderBy } from '@src/enums'
-
 import { atom, selectorFamily } from 'recoil'
+import { recoilPersist } from 'recoil-persist'
+// Recoil's Local Storage Persistence (https://recoiljs.org/docs/guides/atom-effects/#local-storage-persistence) can also be implemented, but I decided to use recoil-persist instead to save time
+const { persistAtom } = recoilPersist()
 
 export const publicKeyState = atom<string>({
   key: 'publicKeyState',
@@ -19,11 +21,13 @@ export const connectionState = atom<Connection | null>({
 export const bookmarksState = atom<Bookmark[]>({
   key: 'bookmarksState',
   default: [],
+  effects_UNSTABLE: [persistAtom],
 })
 
 export const orderByState = atom<OrderBy>({
   key: 'orderByState',
   default: OrderBy.LastTransactionTime,
+  effects_UNSTABLE: [persistAtom],
 })
 
 export const nftReadOnlyQuery = selectorFamily({

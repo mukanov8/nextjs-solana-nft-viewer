@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 
 const ViewerHeader = () => {
-  const { APP_NAME } = process.env
+  const APP_NAME = process.env.APP_NAME || 'NFT Viewer'
   const router = useRouter()
   const { key } = router.query
 
