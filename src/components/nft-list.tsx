@@ -14,9 +14,6 @@ const NftList: React.FC<Props> = ({ nfts }) => {
   const orderBy = useRecoilValue(orderByState)
   const orderedNfts = getOrderedNfts(nfts, orderBy)
 
-  // console.log('nfts: ', nfts)
-  // console.log('orderedNfts: ', orderedNfts)
-
   return (
     <SimpleGrid
       minChildWidth="220px"
