@@ -13,7 +13,10 @@ module.exports = {
 
 const intercept = require('intercept-stdout')
 
-// safely ignore recoil warning messages in dev (triggered by HMR)
+/** Safely ignore recoil warning messages in dev (triggered by HMR or next)
+ - https://github.com/facebookexperimental/Recoil/issues/733#issuecomment-729255961
+ - src: https://github.com/facebookexperimental/Recoil/issues/733#issuecomment-923492445
+*/
 function interceptStdout(text) {
   if (text.includes('Duplicate atom key')) {
     return ''

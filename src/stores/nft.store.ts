@@ -34,7 +34,6 @@ export const nftsReadOnlyQuery = selector({
   key: 'nftsReadOnlyQuery',
   get: async ({ get }) => {
     try {
-      console.log('nftsReadOnlyQuery is called')
       // ref: https://www.abiraja.com/blog/querying-solana-blockchain
       const connection = get(connectionState)
       const publicKey = get(publicKeyState)
@@ -54,10 +53,10 @@ export const nftsReadOnlyQuery = selector({
               https://www.quicknode.com/docs/solana/getSignaturesForAddress
               Returns confirmed signatures for transactions involving an address backwards in time from the provided signature or most recent confirmed block.
               Arbitrary limit of 100.
-            */
+          */
           const signatures = await connection.getSignaturesForAddress(new PublicKey(mint), { limit: 100 })
           const time = signatures.map((el) => new Date(el.blockTime || 0))
-          console.log(name, ' times:', time)
+
           return {
             mint,
             name,
@@ -79,16 +78,17 @@ export const nftsReadOnlyQuery = selector({
   },
 })
 
-/*  
+/**
   Note: 
-  1. try catch is used here to be able to use this state with useRecoilValueLoadable in viewer.tsx 
+  1. try-catch is used here to be able to use this state with useRecoilValueLoadable in viewer.tsx 
   2. Having a separate state for bookmarked Nfts prevents re-querying the nft data (nftsReadOnlyQuery) when the user clicks on the bookmark icon
+
+  FIXME: Currently it unnecessarily prints(catches) error when nfts(nftsReadOnlyQuery) promise is pending. Still works.
 */
 export const nftsWithBookmarksReadOnlyState = selector({
   key: 'nftsWithBookmarksReadOnlyState',
   get: ({ get }) => {
     try {
-      console.log('nftsWithBookmarks is called')
       const nfts = get(nftsReadOnlyQuery)
       const bookmarks = get(bookmarksState)
       return nfts.map((nft) => {

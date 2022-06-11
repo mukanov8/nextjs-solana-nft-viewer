@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Flex, Heading, Input, InputGroup, InputRightElement, Tooltip } from '@chakra-ui/react'
 import { validatePublicKey } from '@src/utils/validatePublicKey'
 import { publicKeyState } from '@src/stores/nft.store'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { SearchIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
@@ -14,7 +14,16 @@ const ViewerHeader = () => {
   const { key } = router.query
 
   const [publicKeyInput, setPublicKeyInput] = useState((key as string) || '')
-  const setPublicKey = useSetRecoilState(publicKeyState)
+  const [publicKey, setPublicKey] = useRecoilState(publicKeyState)
+
+  // update publicKeyInput and publicKey on page refresh or slug change
+  useEffect(() => {
+    if (key && validatePublicKey(key as string) && (key as string) !== publicKey) {
+      setPublicKeyInput(key as string)
+      setPublicKey(key as string)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, publicKey])
 
   const isValidPublicKeyInput = publicKeyInput.length > 1 && validatePublicKey(publicKeyInput)
   const [isInvalidShown, setIsInvalidShown] = useState(false)

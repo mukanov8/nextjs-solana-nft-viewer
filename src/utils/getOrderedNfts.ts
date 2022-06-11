@@ -1,10 +1,11 @@
 import { Nft } from '@src/types'
 import { OrderBy } from '@src/enums'
 
-// sort/order nfts according to the following rules:
-// 1. bookmarkedTime
-// 2. creation time or last transaction time
-
+/** 
+  Sort/order nfts according to the following rules:
+  1. bookmarkedTime
+  2. creation time or last transaction time
+ */
 export const getOrderedNfts = (nfts: Nft[], orderBy: OrderBy) => {
   const bookmarkedNfts = nfts.filter((nft) => nft.isBookmarked)
   const unbookmarkedNfts = nfts.filter((nft) => !nft.isBookmarked)

@@ -1,6 +1,7 @@
-// UNUSED. recoil-persist library is used instead
-// code from https://recoiljs.org/docs/guides/atom-effects/#local-storage-persistence
-
+/** 
+  UNUSED. recoil-persist library is used instead
+  https://recoiljs.org/docs/guides/atom-effects/#local-storage-persistence
+*/
 export const localStorageEffect =
   (key: string) =>
   ({ setSelf, onSet }) => {
