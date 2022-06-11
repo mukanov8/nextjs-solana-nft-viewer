@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { bookmarksState, connectionState, orderByState, parsedNftReadOnlyQuery } from '@src/stores/nft.store'
+import { bookmarksState, connectionState, nftsWithBookmarksReadOnlyState, orderByState } from '@src/stores/nft.store'
 import { useRecoilValue, useRecoilValueLoadable, useResetRecoilState, useSetRecoilState } from 'recoil'
 import { Button, Center, Flex, Spinner } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
@@ -19,7 +19,7 @@ const ViewerPage = () => {
     setConnection(new Connection(clusterApiUrl('devnet'), 'confirmed'))
   }, [])
 
-  const nftsLoadable = useRecoilValueLoadable(parsedNftReadOnlyQuery(key as string))
+  const nftsLoadable = useRecoilValueLoadable(nftsWithBookmarksReadOnlyState)
   const nfts = nftsLoadable.state === 'hasValue' ? nftsLoadable.contents : []
 
   const setOrderBy = useSetRecoilState(orderByState)
