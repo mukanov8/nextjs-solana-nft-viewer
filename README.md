@@ -8,7 +8,7 @@ A simple Next application for viewing NFTs of an arbitrary public key (address) 
 
 - [x] User can input a public key and the viewer app will displays all of the NFTs held by the public key
 - [x] NFT data is retrieved from Solana directly using `solana-web3.js` and `metaplex/js"`
-- [x] Mobile friendly/Respoonsive
+- [x] Mobile friendly/Responsive
 - [x] Dark mode support
 - [x] NFT listing can be customized
   - [x] NFT listing can be sorted by last transaction time
@@ -45,10 +45,9 @@ A simple Next application for viewing NFTs of an arbitrary public key (address) 
 
 1. Clone or download the project.
 2. `cd` in the project directory.
-3. If you cloned the project, make sure you remove the remote reference to this project by running `git remote rm origin`.
-4. Copy `.env.example` to `.env` as that file is used to load up all your environment variables.
-5. Run `yarn install` or `npm install` to install all dependencies.
-6. Use following devnet public Keys for searching:
+3. Copy `.env.example` to `.env` as that file is used to load up all your environment variables.
+4. Run `yarn install` install all dependencies.
+5. Use following devnet public Keys for searching:
 
    ```bash
        E2APdVioPqt8nXFn2Qqu5TKfU2Zp9vB3WP49J7PADWDH
