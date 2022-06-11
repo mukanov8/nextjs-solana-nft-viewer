@@ -4,6 +4,16 @@ A simple Next application for viewing NFTs of an arbitrary public key (address) 
 
 ## Screenshots
 
+### Desktop
+
+<img width="1280" alt="Screen Shot 2022-06-11 at 18 03 17" src="https://user-images.githubusercontent.com/55445687/173181371-5f2d5077-ab9a-40cd-abd4-652bbb7eb843.png">
+<img width="1280" alt="Screen Shot 2022-06-11 at 18 05 39" src="https://user-images.githubusercontent.com/55445687/173181419-caa32a42-def4-44d9-9337-54d64d2223e0.png">
+
+### Mobile
+
+<img width="332" alt="Screen Shot 2022-06-11 at 18 06 32" src="https://user-images.githubusercontent.com/55445687/173181452-275b8ca3-2d7d-40be-ba2a-4fae24337d8f.png"> 
+<img width="335" alt="Screen Shot 2022-06-11 at 18 06 44" src="https://user-images.githubusercontent.com/55445687/173181462-b1abec5e-7746-4fcc-b8c8-4953443ab7a1.png">
+
 ## Features
 
 - [x] User can input a public key and the viewer app will displays all of the NFTs held by the public key
@@ -47,7 +57,8 @@ A simple Next application for viewing NFTs of an arbitrary public key (address) 
 2. `cd` in the project directory.
 3. Copy `.env.example` to `.env` as that file is used to load up all your environment variables.
 4. Run `yarn install` install all dependencies.
-5. Use following devnet public Keys for searching:
+5. Run `yarn dev` to run the project
+6. Use following devnet public Keys for searching:
 
    ```bash
        E2APdVioPqt8nXFn2Qqu5TKfU2Zp9vB3WP49J7PADWDH
@@ -106,3 +117,4 @@ If you feel like changing the directory structure, please change the appropriate
 4. Due to the constraints of time I couldn't write (unit) tests with **Jest** as I initially intended
 5. For the same reason, I did not implement the NFT ordering with **Drag&Drop** and **undo** functionality
 6. For drag and drop functionality, I had an idea to wrap my NftItem components using [React-Dnd library](https://react-dnd.github.io/react-dnd/docs/overview) or using my own draggable implementation in [mukanov8/draggable-task](https://github.com/mukanov8/draggable-task) repo and useRefs
+7. For time based ordering/sorting, I might have done ascending instead of descending order. Please let me know during evaluation if I did it the right way
