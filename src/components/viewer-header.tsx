@@ -1,39 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Flex, Heading, Input, InputGroup, InputRightElement, Tooltip } from '@chakra-ui/react'
 import { validatePublicKey } from '@src/utils/validatePublicKey'
 import { publicKeyState } from '@src/stores/nft.store'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { SearchIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 
 const ViewerHeader = () => {
   const APP_NAME = process.env.APP_NAME || 'NFT Viewer'
+
   const router = useRouter()
   const { key } = router.query
 
-  const [publicKey, setPublicKey] = useRecoilState(publicKeyState)
+  const [publicKeyInput, setPublicKeyInput] = useState((key as string) || '')
+  const setPublicKey = useSetRecoilState(publicKeyState)
 
-  useEffect(() => {
-    if (key && validatePublicKey(key as string)) {
-      setPublicKey(key as string)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key])
-
-  const isValidPublicKeyInput = publicKey.length > 1 && validatePublicKey(publicKey)
+  const isValidPublicKeyInput = publicKeyInput.length > 1 && validatePublicKey(publicKeyInput)
   const [isInvalidShown, setIsInvalidShown] = useState(false)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPublicKey(event.target.value)
+    setPublicKeyInput(event.target.value)
     setIsInvalidShown(false)
   }
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    if (isValidPublicKeyInput) router.replace(`/viewer/${publicKey}`)
-    else setIsInvalidShown(true)
+
+    if (isValidPublicKeyInput) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.push(`/viewer/${publicKeyInput}`)
+      setPublicKey(publicKeyInput)
+    } else setIsInvalidShown(true)
   }
 
   return (
@@ -43,10 +41,10 @@ const ViewerHeader = () => {
           {APP_NAME}
         </Heading>
       </NextLink>
-      <Tooltip label={`${publicKey} is not a valid key`} placement="top" isOpen={isInvalidShown}>
+      <Tooltip label={`${publicKeyInput} is not a valid key`} placement="bottom" isOpen={isInvalidShown}>
         <InputGroup as="form" onSubmit={handleSubmit} w={['100%', '60%']} minW={['unset', '500px']} mx="auto">
           <Input
-            value={publicKey}
+            value={publicKeyInput}
             onChange={handleInputChange}
             placeholder="Search using public key"
             focusBorderColor="primary"
