@@ -36,8 +36,8 @@ const SearchPage: NextPage = () => {
 
   return (
     <>
-      <MainHeading mb="40px">{APP_NAME}</MainHeading>
-      <InputGroup as="form" onSubmit={handleSubmit} w={['100%', '50%']} mb="40px" minW={['unset', '500px']}>
+      <MainHeading>{APP_NAME}</MainHeading>
+      <InputGroup as="form" onSubmit={handleSubmit} w={['100%', '50%']} my="40px" minW={['unset', '500px']}>
         <Input
           value={publicKeyInput}
           onChange={handleInputChange}

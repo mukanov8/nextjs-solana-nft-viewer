@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable no-console */
 import React from 'react'
 import { Box, Text, Img, useColorModeValue, Skeleton } from '@chakra-ui/react'
@@ -63,7 +65,14 @@ const NftItem: React.FC<Props> = ({ nft }) => {
       )}
       <a href={`https://solscan.io/token/${nft.mint}`}>
         <Skeleton isLoaded={!loading} borderRadius="16px">
-          <Img w="100%" height="200px" objectFit="cover" src={data?.image} alt={nft.name} borderRadius="16px" />
+          <Img
+            w="100%"
+            height="200px"
+            objectFit="cover"
+            src={data ? data['image'] : undefined}
+            alt={nft.name}
+            borderRadius="16px"
+          />
         </Skeleton>
         <Box p="12px">
           <Text fontSize="lg">{nft.name}</Text>

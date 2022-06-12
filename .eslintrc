@@ -49,7 +49,7 @@
     "no-restricted-syntax": ["error", "ForInStatement"],
     "use-isnan": "error",
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn",
       {
         "args": "after-used",
         "ignoreRestSiblings": true,
@@ -64,7 +64,7 @@
     "@typescript-eslint/no-use-before-define": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
     "@typescript-eslint/no-unnecessary-condition": [
-      "error",
+      "warn",
       {
         "allowConstantLoopConditions": true
       }

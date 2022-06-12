@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { bookmarksState, connectionState, nftsWithBookmarksReadOnlyState, orderByState } from '@src/stores/nft.store'
 import { useRecoilState, useRecoilValue, useRecoilValueLoadable, useResetRecoilState, useSetRecoilState } from 'recoil'
 import { Button, Center, Flex, Spinner } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
 import ViewerHeader from '@src/components/viewer-header'
 import Error from '@src/components/error'
 import NftList from '@src/components/nft-list'
@@ -10,12 +9,11 @@ import { clusterApiUrl, Connection } from '@solana/web3.js'
 import { OrderBy } from '@src/enums'
 
 const ViewerPage = () => {
-  const router = useRouter()
-
   const setConnection = useSetRecoilState(connectionState)
 
   useEffect(() => {
     setConnection(new Connection(clusterApiUrl('devnet'), 'confirmed'))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const nftsLoadable = useRecoilValueLoadable(nftsWithBookmarksReadOnlyState)
