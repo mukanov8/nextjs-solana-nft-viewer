@@ -48,9 +48,18 @@ const SearchPage: NextPage = () => {
         <InputRightElement children={<SearchIcon color="primary" />} cursor="pointer" onClick={handleSubmit} />
       </InputGroup>
       {isInvalidShown && (
-        <Text>
-          <b>{publicKeyInput} </b>is not a valid public key{' '}
-        </Text>
+        <>
+          <Text mb="12px">
+            <b>{publicKeyInput} </b>is not a valid public key{' '}
+          </Text>
+          <Text mb="4px">You can use devnet keys below for testing:</Text>
+          <Text mb="4px" color="primary">
+            E2APdVioPqt8nXFn2Qqu5TKfU2Zp9vB3WP49J7PADWDH
+          </Text>
+          <Text mb="4px" color="primary">
+            3sqgCvvQTqWpCydeQL9w1FwVFQpkkBM6eK1qa3WZD7Wg
+          </Text>
+        </>
       )}
     </>
   )
