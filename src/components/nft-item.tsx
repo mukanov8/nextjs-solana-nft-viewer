@@ -63,7 +63,7 @@ const NftItem: React.FC<Props> = ({ nft }) => {
           onClick={handleBookmarkClick}
         />
       )}
-      <a href={`https://solscan.io/token/${nft.mint}`}>
+      <a href={`https://solscan.io/token/${nft.mint}?cluster=devnet`}>
         <Skeleton isLoaded={!loading} borderRadius="16px">
           <Img
             w="100%"

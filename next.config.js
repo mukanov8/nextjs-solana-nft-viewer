@@ -3,6 +3,8 @@ require('dotenv').config()
 
 const ENV_VARS = {
   APP_NAME: process.env.APP_NAME,
+  EXAMPLE_DEVNET_KEY_1: process.env.EXAMPLE_DEVNET_KEY_1,
+  EXAMPLE_DEVNET_KEY_2: process.env.EXAMPLE_DEVNET_KEY_2,
 }
 
 module.exports = {

@@ -5,7 +5,7 @@ import { Bookmark, Nft } from '@src/types'
 import { OrderBy } from '@src/enums'
 import { atom, selector } from 'recoil'
 import { recoilPersist } from 'recoil-persist'
-// Recoil's Local Storage Persistence (https://recoiljs.org/docs/guides/atom-effects/#local-storage-persistence) can also be implemented, but I decided to use recoil-persist instead to save time
+// Recoil's Local Storage Persistence (https://recoiljs.org/docs/guides/atom-effects/#local-storage-persistence) can also be implemented, but I decided to use recoil-persist for convenience
 const { persistAtom } = recoilPersist()
 
 export const publicKeyState = atom<string>({
@@ -48,6 +48,7 @@ export const nftsReadOnlyQuery = selector({
         try {
           const { mint } = nft
           const { uri, name } = nft.data
+          console.log(nft)
           /*
               https://docs.solana.com/integrations/exchange.
               https://www.quicknode.com/docs/solana/getSignaturesForAddress

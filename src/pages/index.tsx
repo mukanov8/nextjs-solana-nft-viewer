@@ -10,6 +10,8 @@ import { publicKeyState } from '@src/stores/nft.store'
 
 const SearchPage: NextPage = () => {
   const APP_NAME = process.env.APP_NAME || 'NFT Viewer'
+  const EXAMPLE_DEVNET_KEYS = [process.env.EXAMPLE_DEVNET_KEY_1, process.env.EXAMPLE_DEVNET_KEY_2]
+  const hasExampleDevnetKeys = EXAMPLE_DEVNET_KEYS.every((key) => !!key)
 
   const router = useRouter()
 
@@ -53,12 +55,20 @@ const SearchPage: NextPage = () => {
             <b>{publicKeyInput} </b>is not a valid public key{' '}
           </Text>
           <Text mb="4px">You can use devnet keys below for testing:</Text>
-          <Text mb="4px" color="primary">
-            E2APdVioPqt8nXFn2Qqu5TKfU2Zp9vB3WP49J7PADWDH
-          </Text>
-          <Text mb="4px" color="primary">
-            3sqgCvvQTqWpCydeQL9w1FwVFQpkkBM6eK1qa3WZD7Wg
-          </Text>
+          {hasExampleDevnetKeys ? (
+            EXAMPLE_DEVNET_KEYS.map(
+              (key) =>
+                key && (
+                  <Text key={key} color="primary" mb="4px">
+                    {key}
+                  </Text>
+                )
+            )
+          ) : (
+            <Text color="primary" mb="4px">
+              No devnet keys available at the moment:(
+            </Text>
+          )}
         </>
       )}
     </>
